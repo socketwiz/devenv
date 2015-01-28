@@ -5,8 +5,8 @@ FROM strongloop/node
 # and slc commands
 RUN sudo apt-get update
 RUN sudo apt-get install -y simpleproxy net-tools tmux zsh
-ADD https://raw.githubusercontent.com/socketwiz/dotfiles/master/.tmux.conf /home/strongloop/.tmux.conf
-RUN sudo chown strongloop:strongloop /home/strongloop/.tmux.conf
-WORKDIR /home/strongloop/chattible-web
+ADD . /home/strongloop
+RUN sudo chown -R strongloop:strongloop /home/strongloop
+WORKDIR /home/strongloop/app
 ENV NODE_ENV development
 CMD [ "/bin/zsh" ]
