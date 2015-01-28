@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/vim-pseudocl"]
 	path = .vim/bundle/vim-pseudocl
 	url = git@github.com:junegunn/vim-pseudocl.git
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh.git
