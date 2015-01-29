@@ -38,15 +38,15 @@ environment.
 * sudo
 * tmux
 * vim-nox (because it has python support compiled in for YouCompleteMe and Ultisnips)
-* zsh
+* zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
 * [the\_platinum\_searcher](https://github.com/monochromegane/the_platinum_searcher)
-
-Zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
 
 [Tmux](http://tmux.sourceforge.net/) with a heavily customized [configuration](https://github.com/socketwiz/devenv/blob/master/.tmux.conf).  Prefix command has been changed to ctrl-space, color-scheme updates, keybinds for creating and manipulating windows and a custom status bar.  
 
 [Vim](http://www.vim.org/) with the following addons and a highly customized
-[.vimrc](https://github.com/socketwiz/devenv/blob/master/.vimrc):
+[.vimrc](https://github.com/socketwiz/devenv/blob/master/.vimrc).  The leader
+key has been changed to &lt;space&gt; and the arrow keys have been disabled
+among other things:
 
 * [ ctrlp.vim ](https://github.com/kien/ctrlp.vim)
 * [ javascript-libraries-syntax.vim ](https://github.com/othree/javascript-libraries-syntax.vim)

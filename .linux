@@ -1,3 +1,2 @@
 EDITOR="/usr/bin/vim"
 SVN_EDITOR="/usr/bin/vim"
-PATH=$PATH:$HOME/bin
