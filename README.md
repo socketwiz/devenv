@@ -23,7 +23,7 @@ environment.
 
 # Features
 
-[Ubuntu 14.04](http://www.ubuntu.com/) with the following packages: 
+[Ubuntu 14.04](http://www.ubuntu.com/) with the following bare necessites: 
 
 * build-essential
 * cmake
