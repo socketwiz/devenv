@@ -61,9 +61,9 @@ among other things:
 * [ vim-unimpaired ](https://github.com/tpope/vim-unimpaired)
 * [ YouCompleteMe ](https://github.com/Valloric/YouCompleteMe)
 
+[Node](http://nodejs.org/) v0.10.36  
 [Python](https://www.python.org/) v2.7.6  
 [Ruby](https://www.ruby-lang.org/) v1.9.3p484  
-[Node](http://nodejs.org/) v0.10.36  
 
 [fzf](https://github.com/junegunn/fzf) a general-purpose fuzzy finder for your
 shell. Active with ctrl-r.
