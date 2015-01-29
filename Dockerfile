@@ -1,16 +1,38 @@
-FROM strongloop/node
-# You start off as the 'strongloop' user.
-# If a RUN command needs root, you can use sudo
-# In addition to standard Linux commands you also have access to node, npm,
-# and slc commands
-RUN sudo apt-get update
-RUN sudo apt-get install -y simpleproxy net-tools tmux zsh ruby cmake python-dev
-ADD . /home/strongloop
-RUN sudo chown -R strongloop:strongloop /home/strongloop
-RUN sudo -u strongloop git submodule update --init --recursive
-RUN sudo -u strongloop mv /home/strongloop/rickyn.zsh-theme /home/strongloop/.oh-my-zsh/themes
-RUN sudo -u strongloop yes | /home/strongloop/.fzf/install
-RUN sudo -u strongloop yes | /home/strongloop/.vim/bundle/YouCompleteMe/install.sh
-WORKDIR /home/strongloop/app
+FROM ubuntu:latest
+
+# Get up to date, install the bare necessities
+# Create "developer" user
+RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
+    apt-get update -q && \
+    apt-get install -y -q curl vim-nox man-db ssh sudo simpleproxy net-tools tmux zsh ruby cmake python-dev build-essential zsh net-tools git && \
+    curl -sL https://deb.nodesource.com/setup | sudo bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm && \
+    npm install -g phonegap strongloop && \
+    apt-get clean )' > /dev/null && \
+    useradd -ms /bin/zsh developer && \
+    chown -R developer /usr/local && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# install the platinum searcher
+RUN curl -L https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.6/pt_linux_amd64.tar.gz | tar xz -C /tmp \
+    && mv /tmp/pt_linux_amd64/pt /usr/local/bin \
+    && rm -rf /tmp/*
+
+# setup environment
 ENV NODE_ENV development
+ENV HOME /home/developer
+USER developer
+
+# copy development projects to directory that will be shared with host
+WORKDIR /home/developer/dev
+ADD . $HOME
+RUN sudo chown -R developer:developer $HOME
+
+# miscellaneous configuration
+RUN git submodule update --init --recursive
+RUN mv $HOME/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
+RUN yes | $HOME/.fzf/install
+RUN $HOME/.vim/bundle/YouCompleteMe/install.sh
+
 CMD [ "/bin/zsh" ]
