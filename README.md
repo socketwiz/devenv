@@ -11,15 +11,15 @@ Feel free to fork and customize to your liking.
     $ docker build -t developer/devenv:latest .  
     $ docker run -it -p 3000:3000 -p 5858:8585 --name dev -v $HOME/dev:/home/developer/dev developer/devenv  
 
-When you exit the container it will stop. To start it back up:
-
-    $ docker start dev  
-    $ docker attach dev  
-
 Port 3000 is for whatever project I'm working on that I would like to expose to
 a browser, port 5858 is so I can attach WebStorm to the nodejs debugger.  The
 -v paths are so I can share a directory between my host and the development
 environment.
+
+When you exit the container it will stop. To start it back up:
+
+    $ docker start dev  
+    $ docker attach dev  
 
 # Features
 
