@@ -25,7 +25,7 @@ ENV HOME /home/developer
 USER developer
 
 # copy development projects to directory that will be shared with host
-WORKDIR /home/developer/dev
+WORKDIR $HOME/dev
 ADD . $HOME
 RUN sudo chown -R developer:developer $HOME
 
