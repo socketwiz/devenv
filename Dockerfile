@@ -26,8 +26,9 @@ USER developer
 
 # directory that will be shared with host
 WORKDIR $HOME/dev
+
 ADD . $HOME
-RUN sudo chown -R developer:developer $HOME
+RUN chown -R developer:developer $HOME
 
 # miscellaneous configuration
 RUN git submodule update --init --recursive
