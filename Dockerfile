@@ -24,7 +24,7 @@ ENV NODE_ENV development
 ENV HOME /home/developer
 USER developer
 
-# copy development projects to directory that will be shared with host
+# directory that will be shared with host
 WORKDIR $HOME/dev
 ADD . $HOME
 RUN sudo chown -R developer:developer $HOME
