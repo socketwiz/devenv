@@ -8,6 +8,8 @@ Feel free to fork and customize to your liking.
     $ boot2docker init -m 4096 (default is 2048 but building YouCompleteMe
     exhausts all available memory, 4096 makes it happy)
     $ boot2docker up
+    $ git clone https://github.com/socketwiz/devenv.git
+    $ cd devenv
     $ docker build -t developer/devenv:latest .  
     $ docker run -it -p 3000:3000 -p 5858:8585 --name dev -v $HOME/dev:/home/developer/dev developer/devenv  
 

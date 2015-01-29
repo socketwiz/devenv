@@ -4,7 +4,7 @@ FROM ubuntu:latest
 # Create "developer" user
 RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
     apt-get update -q && \
-    apt-get install -y -q curl vim-nox man-db ssh sudo simpleproxy net-tools tmux zsh ruby cmake python-dev build-essential zsh net-tools git && \
+    apt-get install -y -q build-essential cmake curl git man-db net-tools python-dev ruby ssh simpleproxy sudo tmux vim-nox zsh && \
     curl -sL https://deb.nodesource.com/setup | sudo bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
