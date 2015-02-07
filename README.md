@@ -47,8 +47,8 @@ When you exit the container it will stop. To start it back up:
 * tmux
 * vim-nox (because it has python support compiled in for YouCompleteMe and Ultisnips)
 * zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
-* [httpie](http://httpie.org)  
-* [hubflow](https://github.com/datasift/gitflow)  
+* [httpie](http://httpie.org) (for debugging json APIs)  
+* [hubflow](https://github.com/datasift/gitflow) (for better git branch management)  
 
 [Tmux](http://tmux.sourceforge.net/) with a heavily customized [configuration](https://github.com/socketwiz/devenv/blob/master/.tmux.conf).  Prefix command has been changed to ctrl-space, color-scheme updates, keybinds for creating and manipulating windows and a custom status bar.  
 
