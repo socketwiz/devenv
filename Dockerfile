@@ -8,7 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
     curl -sL https://deb.nodesource.com/setup | sudo bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
-    npm install -g phonegap strongloop && \
+    npm install -g phonegap strongloop mocha && \
     apt-get clean )' > /dev/null && \
     useradd -ms /bin/zsh developer && \
     chown -R developer /usr/local && \

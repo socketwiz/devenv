@@ -49,6 +49,7 @@ When you exit the container it will stop. To start it back up:
 * zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
 * [httpie](http://httpie.org) (for debugging json APIs)  
 * [hubflow](https://github.com/datasift/gitflow) (for better git branch management)  
+* [fzf](https://github.com/junegunn/fzf) (a general-purpose fuzzy finder for your shell, active with ctrl-r)
 
 [Tmux](http://tmux.sourceforge.net/) with a heavily customized [configuration](https://github.com/socketwiz/devenv/blob/master/.tmux.conf).  Prefix command has been changed to ctrl-space, color-scheme updates, keybinds for creating and manipulating windows and a custom status bar.  
 
@@ -74,10 +75,9 @@ among other things:
 [Python](https://www.python.org/) v2.7.6  
 [Ruby](https://www.ruby-lang.org/) v1.9.3p484  
 
-[fzf](https://github.com/junegunn/fzf) a general-purpose fuzzy finder for your
-shell. Active with ctrl-r.
 
 ### npm ls -g
 
 * [phonegap](http://phonegap.com/)
 * [strongloop](http://strongloop.com/)
+* [mocha](https://github.com/mochajs/mocha)
