@@ -4,11 +4,11 @@ FROM ubuntu:latest
 # Create "developer" user
 RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
     apt-get update -q && \
-    apt-get install -y -q build-essential cmake curl git man-db net-tools python-dev ruby ssh simpleproxy sudo tmux vim-nox zsh && \
+    apt-get install -y -q build-essential cmake curl git man-db net-tools python-dev ruby ssh simpleproxy sudo tmux vim-nox zsh httpie && \
     curl -sL https://deb.nodesource.com/setup | sudo bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
-    npm install -g phonegap strongloop && \
+    npm install -g phonegap strongloop mocha && \
     apt-get clean )' > /dev/null && \
     useradd -ms /bin/zsh developer && \
     chown -R developer /usr/local && \
@@ -35,5 +35,9 @@ RUN git submodule update --init --recursive
 RUN mv $HOME/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
 RUN yes | $HOME/.fzf/install
 RUN $HOME/.vim/bundle/YouCompleteMe/install.sh
+
+# setup hubflow
+RUN cd $HOME/gitflow && \
+    ./install.sh
 
 CMD [ "/bin/zsh" ]

@@ -11,9 +11,14 @@ Feel free to fork and customize to your liking.
     $ git clone https://github.com/socketwiz/devenv.git
     $ cd devenv
     $ docker build -t developer/devenv:latest .  
-    $ docker run -it -p 3000:3000 -p 5858:8585 --name dev -v $HOME/dev:/home/developer/dev developer/devenv  
+    $ docker run -it --rm -p 8000:8000 -p 5858:8585 --name dev -v $HOME/dev:/home/developer/dev developer/devenv  
+    $ tmux new -s dev  
+    $ simpleproxy -L 0.0.0.0:8585 -R 127.0.0.1:5858  
+    # open new tmux window or split the window, whatever you prefer  
+    $ node --debug app.js
 
-Port 3000 is for whatever project I'm working on that I would like to expose to
+
+Port 8000 is for whatever project I'm working on that I would like to expose to
 a browser, port 5858 is so I can attach WebStorm to the nodejs debugger.  The
 -v paths are so I can share a directory between my host and the development
 environment.
@@ -42,6 +47,9 @@ When you exit the container it will stop. To start it back up:
 * tmux
 * vim-nox (because it has python support compiled in for YouCompleteMe and Ultisnips)
 * zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
+* [httpie](http://httpie.org) (for debugging json APIs)  
+* [hubflow](https://github.com/datasift/gitflow) (for better git branch management)  
+* [fzf](https://github.com/junegunn/fzf) (a general-purpose fuzzy finder for your shell, active with ctrl-r)
 
 [Tmux](http://tmux.sourceforge.net/) with a heavily customized [configuration](https://github.com/socketwiz/devenv/blob/master/.tmux.conf).  Prefix command has been changed to ctrl-space, color-scheme updates, keybinds for creating and manipulating windows and a custom status bar.  
 
@@ -67,10 +75,9 @@ among other things:
 [Python](https://www.python.org/) v2.7.6  
 [Ruby](https://www.ruby-lang.org/) v1.9.3p484  
 
-[fzf](https://github.com/junegunn/fzf) a general-purpose fuzzy finder for your
-shell. Active with ctrl-r.
 
 ### npm ls -g
 
 * [phonegap](http://phonegap.com/)
 * [strongloop](http://strongloop.com/)
+* [mocha](https://github.com/mochajs/mocha)
