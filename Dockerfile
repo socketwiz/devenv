@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:trusty
 
 # Get up to date, install the bare necessities
 # Create "developer" user
@@ -8,6 +8,9 @@ RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
     curl -sL https://deb.nodesource.com/setup | sudo bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
+    npm install -g node-gyp && \
+    node-gyp install 2>/dev/null && \
+    npm cache clear && \
     npm install -g phonegap strongloop mocha && \
     apt-get clean )' > /dev/null && \
     useradd -ms /bin/zsh developer && \
