@@ -5,6 +5,7 @@ FROM ubuntu:trusty
 RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
     apt-get update -q && \
     apt-get install -y -q build-essential cmake curl git man-db net-tools python-dev ruby ssh simpleproxy sudo tmux vim-nox zsh httpie && \
+    chmod -R 755 /usr/local/share/zsh/site-functions && \
     curl -sL https://deb.nodesource.com/setup | sudo bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
