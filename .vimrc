@@ -1,7 +1,7 @@
 colorscheme vividchalk
 syntax on
 set guifont=Source\ Code\ Pro:h14
-set tags=.git/tags,.git/tags.usat
+set tags+=.git/tags
 
 " disable the arrow keys
 noremap <Up> <Nop>
@@ -30,6 +30,7 @@ set softtabstop=2
 set expandtab
 autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
 
 set encoding=utf-8
 set scrolloff=3
@@ -56,6 +57,7 @@ set laststatus=2
 if version >= 703
   " show the line number relative to the line with the cursor
   set relativenumber
+  set number " current line shows line number
 endif
 
 if has('persistent_undo')
@@ -104,12 +106,22 @@ nmap <leader>8 :TagbarToggle<CR>
 
 " pretty print json
 nmap <leader>1 :%!python -m json.tool<CR>
+" pretty print xml
+nmap <leader>2 :silent %!xmllint --encode UTF-8 --format -<CR>
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " " made, these lines close it on movement in insert mode or when leaving
 " " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+" display tab and extra whitespace characters
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+" set list
 
 " pathogen (requires pathogen addon)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,6 +164,7 @@ let g:ctrlp_use_caching = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " END CtrlP
 
+
 " UltiSnips (requires UltiSnips addon)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsEditSplit = 'horizontal'
@@ -160,11 +173,6 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnipsAngular", "UltiSnips"]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " END UltiSnips
 
-" javascript-libraries-syntax
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:used_javascript_libs = 'jquery,angularjs,backbone,underscore'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" END javascript-libraries-syntax
 
 " PreserveNoEOL
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,12 +180,17 @@ let b:PreserveNoEOL = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " END PreserveNoEOL
 
-" Tern
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tern_map_keys = 1
-let g:tern_show_argument_hints='on_hold'
-set updatetime=1000
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" END PreserveNoEOL
 
+" Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_javascript_checkers=['jshint','jscs']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" END Syntastic
