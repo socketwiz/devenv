@@ -1,32 +1,35 @@
-FROM ubuntu:trusty
+FROM ubuntu:14.04
 
-# Get up to date, install the bare necessities
-# Create "developer" user
-RUN DEBIAN_FRONTEND=noninteractive sh -c '( \
-    apt-get update -q && \
-    apt-get install -y -q build-essential cmake curl git man-db net-tools python-dev ruby ssh simpleproxy sudo tmux vim-nox zsh httpie && \
-    chmod -R 755 /usr/local/share/zsh/site-functions && \
-    curl -sL https://deb.nodesource.com/setup | sudo bash - && \
-    apt-get install -y nodejs && \
-    npm install -g npm && \
-    npm install -g node-gyp && \
-    node-gyp install 2>/dev/null && \
-    npm cache clear && \
-    npm install -g phonegap strongloop mocha && \
-    apt-get clean )' > /dev/null && \
-    useradd -ms /bin/zsh developer && \
-    chown -R developer /usr/local && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# give root access to installers
+USER root
+
+RUN apt-get update && apt-get install -y build-essential cmake curl git man-db net-tools python-dev python-pip ruby ssh openssh-server simpleproxy sudo tmux vim-nox zsh httpie postgresql-client
+RUN mkdir /var/run/sshd
+
+RUN chmod -R 755 /usr/local/share/zsh/site-functions
+RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+RUN apt-get install -y nodejs
+RUN npm install -g npm
+RUN npm install -g node-gyp
+RUN node-gyp install
+RUN npm cache clear
+RUN npm install -g strongloop mocha
+RUN apt-get clean
+RUN useradd -ms /bin/zsh developer
+RUN chown -R developer /usr/local
+RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # install the platinum searcher
 RUN curl -L https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.6/pt_linux_amd64.tar.gz | tar xz -C /tmp \
     && mv /tmp/pt_linux_amd64/pt /usr/local/bin \
     && rm -rf /tmp/*
 
-# setup environment
+RUN pip install virtualenv virtualenvwrapper
+
+# setup environment as user developer
+USER developer
 ENV NODE_ENV development
 ENV HOME /home/developer
-USER developer
 
 # directory that will be shared with host
 WORKDIR $HOME/dev
@@ -44,4 +47,9 @@ RUN $HOME/.vim/bundle/YouCompleteMe/install.sh
 RUN cd $HOME/gitflow && \
     ./install.sh
 
-CMD [ "/bin/zsh" ]
+# run sshd as user root
+USER root
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+
