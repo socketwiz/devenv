@@ -5,7 +5,8 @@ USER root
 
 RUN apt-get update && apt-get install -y build-essential cmake curl git man-db net-tools python-dev python-pip ruby ssh openssh-server simpleproxy sudo tmux vim-nox zsh httpie postgresql-client
 RUN mkdir /var/run/sshd
-
+RUN locale-gen "en_US.UTF-8"
+RUN dpkg-reconfigure locales
 RUN chmod -R 755 /usr/local/share/zsh/site-functions
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
@@ -38,10 +39,7 @@ ADD . $HOME
 RUN sudo chown -R developer:developer $HOME
 
 # miscellaneous configuration
-RUN git submodule update --init --recursive
-RUN mv $HOME/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
-RUN yes | $HOME/.fzf/install
-RUN $HOME/.vim/bundle/YouCompleteMe/install.sh
+RUN $HOME/bootstrap
 
 # setup hubflow
 RUN cd $HOME/gitflow && \

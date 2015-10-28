@@ -5,28 +5,23 @@ python and node.js programming and pretty personal to me and my coding style.
 Feel free to fork and customize to your liking.
 
 ### Install
-    $ boot2docker init -m 4096 (default is 2048 but building YouCompleteMe
-    exhausts all available memory, 4096 makes it happy)
-    $ boot2docker up
+    $ docker-machine create development
+    $ docker-machine start development
     $ git clone https://github.com/socketwiz/devenv.git
     $ cd devenv
-    $ docker build -t developer/devenv:latest .  
-    $ docker run -it --rm -p 8000:8000 -p 5858:8585 --name dev -v $HOME/dev:/home/developer/dev developer/devenv  
+    $ # add your ssh public key to the .ssh/authorized_keys file
+    $ ./build
+    $ ./run
+    $ ssh developer@<ip listed in run> -p <port listed in run>
     $ tmux new -s dev  
     $ simpleproxy -L 0.0.0.0:8585 -R 127.0.0.1:5858  
     # open new tmux window or split the window, whatever you prefer  
     $ node --debug app.js
 
-
 Port 8000 is for whatever project I'm working on that I would like to expose to
 a browser, port 5858 is so I can attach WebStorm to the nodejs debugger.  The
 -v paths are so I can share a directory between my host and the development
 environment.
-
-When you exit the container it will stop. To start it back up:
-
-    $ docker start dev  
-    $ docker attach dev  
 
 # Features
 
@@ -42,6 +37,7 @@ When you exit the container it will stop. To start it back up:
 * ruby
 * simpleproxy (needed for port forwarding the nodejs debugging port)
 * ssh
+* sshd
 * sudo
 * [the\_platinum\_searcher](https://github.com/monochromegane/the_platinum_searcher)
 * tmux
@@ -49,7 +45,7 @@ When you exit the container it will stop. To start it back up:
 * zsh (with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))  
 * [httpie](http://httpie.org) (for debugging json APIs)  
 * [hubflow](https://github.com/datasift/gitflow) (for better git branch management)  
-* [fzf](https://github.com/junegunn/fzf) (a general-purpose fuzzy finder for your shell, active with ctrl-r)
+* [fzf](https://github.com/junegunn/fzf) (a general-purpose fuzzy finder for your shell, activate with ctrl-r)
 
 [Tmux](http://tmux.sourceforge.net/) with a heavily customized [configuration](https://github.com/socketwiz/devenv/blob/master/.tmux.conf).  Prefix command has been changed to ctrl-space, color-scheme updates, keybinds for creating and manipulating windows and a custom status bar.  
 
@@ -78,6 +74,6 @@ among other things:
 
 ### npm ls -g
 
-* [phonegap](http://phonegap.com/)
 * [strongloop](http://strongloop.com/)
 * [mocha](https://github.com/mochajs/mocha)
+

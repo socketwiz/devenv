@@ -1,0 +1,42 @@
+#! /bin/bash
+
+cd $HOME
+git clone https://github.com/socketwiz/dotfiles.git
+cd dotfiles
+git submodule update --init --recursive
+cd $HOME
+yes | $HOME/.fzf/install
+
+ln -s $HOME/dotfiles/.linux $HOME/.linux
+
+if [ ! -d "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
+fi
+if [ -a "$HOME/.zshrc" ]; then
+    mv "$HOME/.zshrc" "$HOME/.zshrc.orig"
+fi
+if [ -a "$HOME/.vimrc" ]; then
+    mv "$HOME/.vimrc" "$HOME/.vimrc.orig"
+fi
+if [ -d "$HOME/.vim" ]; then
+    mv "$HOME/.vim" "$HOME/.vim.orig"
+fi
+if [ -a "$HOME/.gitconfig" ]; then
+    mv "$HOME/.gitconfig" "$HOME/.gitconfig.orig"
+fi
+
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+mv $HOME/dotfiles/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
+
+mkdir $HOME/bin
+ln -s $HOME/dotfiles/.ackrc
+ln -s $HOME/dotfiles/.default-difftool.sh $HOME/bin/default-difftool.sh
+ln -s $HOME/dotfiles/.gitconfig
+ln -s $HOME/dotfiles/.tmux.conf
+ln -s $HOME/dotfiles/.vim
+ln -s $HOME/dotfiles/.vimrc
+ln -s $HOME/dotfiles/.zshrc
+ln -s $HOME/dotfiles/angular-vim-snippets/UltiSnips $HOME/dotfiles/.vim/UltiSnipsAngular
+ln -s $HOME/dotfiles/.config/powerline $HOME/.config/powerline
+
+$HOME/.vim/bundle/YouCompleteMe/install.sh
