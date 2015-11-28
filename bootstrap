@@ -41,3 +41,8 @@ ln -s $HOME/dotfiles/angular-vim-snippets/UltiSnips $HOME/dotfiles/.vim/UltiSnip
 ln -s $HOME/dotfiles/.config/powerline $HOME/.config/powerline
 
 $HOME/.vim/bundle/YouCompleteMe/install.sh
+
+# set the timezone
+echo 'America/New_York' > /etc/timezone
+dpkg-reconfigure --frontend noninteractive tzdata
+
