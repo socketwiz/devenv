@@ -8,13 +8,13 @@ RUN mkdir /var/run/sshd
 RUN locale-gen "en_US.UTF-8"
 RUN dpkg-reconfigure locales
 RUN chmod -R 755 /usr/local/share/zsh/site-functions
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 RUN apt-get install -y nodejs
 RUN npm install -g npm
 RUN npm install -g node-gyp
 RUN node-gyp install
 RUN npm cache clear
-RUN npm install -g strongloop mocha
+RUN npm install -g strongloop mocha babel-cli bower nodemon
 RUN apt-get clean
 RUN useradd -ms /bin/zsh developer
 RUN chown -R developer /usr/local
@@ -26,6 +26,7 @@ RUN curl -L https://github.com/monochromegane/the_platinum_searcher/releases/dow
     && rm -rf /tmp/*
 
 RUN pip install virtualenv virtualenvwrapper
+RUN gem install sass
 
 # setup environment as user developer
 USER developer

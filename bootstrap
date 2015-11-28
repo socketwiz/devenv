@@ -5,6 +5,7 @@ git clone https://github.com/socketwiz/dotfiles.git
 cd dotfiles
 git submodule update --init --recursive
 cd $HOME
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes | $HOME/.fzf/install
 
 ln -s $HOME/dotfiles/.linux $HOME/.linux
