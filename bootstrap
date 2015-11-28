@@ -10,6 +10,9 @@ yes | $HOME/.fzf/install
 
 ln -s $HOME/dotfiles/.linux $HOME/.linux
 
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+mv $HOME/dotfiles/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
+
 if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
@@ -25,9 +28,6 @@ fi
 if [ -a "$HOME/.gitconfig" ]; then
     mv "$HOME/.gitconfig" "$HOME/.gitconfig.orig"
 fi
-
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-mv $HOME/dotfiles/rickyn.zsh-theme $HOME/.oh-my-zsh/themes
 
 mkdir $HOME/bin
 ln -s $HOME/dotfiles/.ackrc
