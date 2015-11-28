@@ -10,7 +10,6 @@ RUN dpkg-reconfigure locales
 RUN chmod -R 755 /usr/local/share/zsh/site-functions
 RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 RUN apt-get install -y nodejs
-RUN npm install -g npm
 RUN npm install -g node-gyp
 RUN node-gyp install
 RUN npm cache clear
