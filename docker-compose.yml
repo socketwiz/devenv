@@ -1,9 +1,9 @@
 dev:
     build: .
     external_links:
-        - bin_db_1
-        - bin_redis_1
-        - bin_web_1
+        - utils_db_1
+        - utils_redis_1
+        - utils_web_1
     ports:
         - "2222:22" 
         - "5858:8585" 

@@ -13,7 +13,6 @@ RUN apt-get install -y nodejs
 RUN npm install -g node-gyp
 RUN node-gyp install
 RUN npm cache clear
-RUN npm install -g strongloop mocha babel-cli bower nodemon
 RUN apt-get clean
 RUN useradd -ms /bin/zsh developer
 RUN chown -R developer /usr/local
