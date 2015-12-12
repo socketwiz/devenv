@@ -42,6 +42,7 @@ ln -s $HOME/dotfiles/.zshrc
 ln -s $HOME/dotfiles/angular-vim-snippets/UltiSnips $HOME/dotfiles/.vim/UltiSnipsAngular
 ln -s $HOME/dotfiles/.jshintrc
 ln -s $HOME/dotfiles/.jscsrc
+touch $HOME/.manta
 
 $HOME/.vim/bundle/YouCompleteMe/install.sh
 
