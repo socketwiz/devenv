@@ -9,6 +9,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes | $HOME/.fzf/install
 git clone --recursive https://github.com/datasift/gitflow.git
 yes | $HOME/gitflow/install.sh
+git clone https://github.com/socketwiz/vimwiki.git
 
 ln -s $HOME/dotfiles/.linux $HOME/.linux
 
