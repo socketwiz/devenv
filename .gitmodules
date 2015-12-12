@@ -1,6 +1,0 @@
-[submodule ".fzf"]
-	path = .fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule "gitflow"]
-	path = gitflow
-	url = https://github.com/datasift/gitflow
