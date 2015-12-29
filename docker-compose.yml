@@ -10,6 +10,6 @@ dev:
         - "8000:8000"
         - "8080:8080"
     volumes:
-        - $HOME/.ssh:/home/developer/.ssh
+        - $HOME/ssh:/home/developer/.ssh
         - $HOME/dev:/home/developer/dev
 

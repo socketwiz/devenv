@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 # give root access to installers
 USER root
 
-RUN apt-get update && apt-get install -y build-essential cmake curl git man-db net-tools python-dev python-pip ruby ssh openssh-server simpleproxy sudo tmux vim-nox zsh httpie postgresql-client
+RUN apt-get update && apt-get install -y build-essential cmake curl git man-db net-tools python-dev python-pip ruby ssh openssh-server simpleproxy sudo tmux vim-nox zsh httpie postgresql-client sudo
 RUN mkdir /var/run/sshd
 RUN locale-gen "en_US.UTF-8"
 RUN dpkg-reconfigure locales
@@ -39,13 +39,13 @@ ADD . $HOME
 # miscellaneous configuration
 RUN $HOME/bootstrap
 
-# setup hubflow
-RUN cd $HOME/gitflow && \
-    ./install.sh
-
 # run sshd as user root
 USER root
-RUN chown -R developer:developer $HOME
+RUN sudo chown -R developer:developer $HOME
+
+# set the timezone
+RUN sudo echo 'America/New_York' > /etc/timezone
+RUN sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
