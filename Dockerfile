@@ -35,7 +35,6 @@ ENV HOME /home/developer
 WORKDIR $HOME/dev
 
 ADD . $HOME
-RUN sudo chown -R developer:developer $HOME
 
 # miscellaneous configuration
 RUN $HOME/bootstrap
@@ -46,6 +45,7 @@ RUN cd $HOME/gitflow && \
 
 # run sshd as user root
 USER root
+RUN chown -R developer:developer $HOME
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

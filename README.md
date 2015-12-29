@@ -54,18 +54,32 @@ environment.
 key has been changed to &lt;space&gt; and the arrow keys have been disabled
 among other things:
 
-* [ ctrlp.vim ](https://github.com/kien/ctrlp.vim)
-* [ javascript-libraries-syntax.vim ](https://github.com/othree/javascript-libraries-syntax.vim)
+* [ ctrlp.vim ](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru,
+  tag, etc finder.
 * [ sourcebeautify.vim ](https://github.com/michalliu/sourcebeautify.vim)
-* [ tcomment\_vim ](https://github.com/tomtom/tcomment_vim)
-* [ ultisnips ](https://github.com/SirVer/ultisnips)
-* [ vim-fugitive ](https://github.com/tpope/vim-fugitive)
-* [ vim-json ](https://github.com/elzr/vim-json)
-* [ vim-markdown ](https://github.com/plasticboy/vim-markdown)
-* [ vim-snippets ](https://github.com/honza/vim-snippets)
+  - Beautify your javascript,html,css source code
+* [ syntastic ](https://github.com/scrooloose/syntastic) - Syntax checking hacks
+* [ tcomment\_vim ](https://github.com/tomtom/tcomment_vim) - An extensible
+  & universal comment vim-plugin that also handles embedded filetypes
+* [ ultisnips ](https://github.com/SirVer/ultisnips) - The ultimate snippet
+  solution for Vim.
+* [ vim-fugitive ](https://github.com/tpope/vim-fugitive) - a Git wrapper
+* [ vim-gitgutter ](https://github.com/airblade/vim-gitgutter) - A Vim plugin
+  which shows a git diff in the gutter (sign column) and stages/reverts hunks.
+* [ vim-javascript ](https://github.com/pangloss/vim-javascript) - Vastly
+  improved Javascript indentation and syntax support
+* [ vim-json ](https://github.com/elzr/vim-json) - distinct highlighting of
+  keywords vs values, JSON-specific (non-JS) warnings, quote concealing.
+* [ vim-markdown ](https://github.com/plasticboy/vim-markdown) - syntax
+  highlighting and filetype plugins for Markdown
+* [ vim-snippets ](https://github.com/honza/vim-snippets) - repository contains
+  snippets files for various programming languages.
 * [ vim-surround ](https://github.com/tpope/vim-surround)
-* [ vim-unimpaired ](https://github.com/tpope/vim-unimpaired)
-* [ YouCompleteMe ](https://github.com/Valloric/YouCompleteMe)
+  - quoting/parenthesizing made simple
+* [ vim-unimpaired ](https://github.com/tpope/vim-unimpaired) - pairs of handy
+  bracket mappings
+* [ YouCompleteMe ](https://github.com/Valloric/YouCompleteMe) - A code
+  completion engine
 
 [Node](http://nodejs.org/) v0.10.36  
 [Python](https://www.python.org/) v2.7.6  
