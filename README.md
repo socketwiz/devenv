@@ -56,8 +56,7 @@ among other things:
 
 * [ ctrlp.vim ](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru,
   tag, etc finder.
-* [ sourcebeautify.vim ](https://github.com/michalliu/sourcebeautify.vim)
-  - Beautify your javascript,html,css source code
+* [ sourcebeautify.vim ](https://github.com/michalliu/sourcebeautify.vim) - Beautify your javascript,html,css source code
 * [ syntastic ](https://github.com/scrooloose/syntastic) - Syntax checking hacks
 * [ tcomment\_vim ](https://github.com/tomtom/tcomment_vim) - An extensible
   & universal comment vim-plugin that also handles embedded filetypes
@@ -74,8 +73,7 @@ among other things:
   highlighting and filetype plugins for Markdown
 * [ vim-snippets ](https://github.com/honza/vim-snippets) - repository contains
   snippets files for various programming languages.
-* [ vim-surround ](https://github.com/tpope/vim-surround)
-  - quoting/parenthesizing made simple
+* [ vim-surround ](https://github.com/tpope/vim-surround) - quoting/parenthesizing made simple
 * [ vim-unimpaired ](https://github.com/tpope/vim-unimpaired) - pairs of handy
   bracket mappings
 * [ YouCompleteMe ](https://github.com/Valloric/YouCompleteMe) - A code
@@ -90,4 +88,3 @@ among other things:
 
 * [strongloop](http://strongloop.com/)
 * [mocha](https://github.com/mochajs/mocha)
-
